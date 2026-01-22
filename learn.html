@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn - Traffic Lights</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #ffffff; text-align: center; color: #333; }
+        nav { background: #333; padding: 15px; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-size: 1.1em; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; text-align: left; }
+
+        h1 { text-align: center; margin-bottom: 10px; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        .interactive-section { text-align: center; margin: 30px 0; padding: 20px; background: #f9f9f9; border-radius: 10px; }
+        
+        .traffic-signal { 
+            background: #2c3e50; 
+            width: 80px; 
+            padding: 15px; 
+            margin: 0 auto; 
+            border-radius: 15px; 
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .light { 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            margin: 10px auto; 
+            background: #555; 
+            transition: background 0.3s;
+        }
+
+        .red:hover { background: #ff3b30; }
+        .yellow:hover { background: #ffcc00; }
+        .green:hover { background: #4cd964; }
+
+        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .detail-card { background: #f4f4f4; padding: 15px; border-radius: 8px; }
+        
+        @media (max-width: 600px) {
+            .details-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+    <a href="index.html">Home</a>
+    <a href="register.html">Register</a>
+    <a href="learn.html">Lights</a>
+    <a href="learn_row.html">Right of Way</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+    <div class="container">
+        <h1>Traffic Light Rules</h1>
+        <p style="text-align: center;">Mastering the signals is key to road safety. Explore the guide below.</p>
+        <h2>Standard Signal Rules</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>🔴 Red Light</h3>
+                <p><strong>Meaning:</strong> Complete Stop.</p>
+                <p><strong>Action:</strong> Stop behind the white limit line or crosswalk. Do not proceed until the light turns green.</p>
+                <p><em>Note: You may turn right on red after stopping, unless a sign forbids it.</em></p>
+            </div>
+            <div class="detail-card">
+                <h3>🟡 Yellow Light</h3>
+                <p><strong>Meaning:</strong> Caution / The light is about to turn Red.</p>
+                <p><strong>Action:</strong> Stop if you can do so safely. If you are already in the intersection, continue through carefully. <strong>Do not speed up.</strong></p>
+            </div>
+            <div class="detail-card">
+                <h3>🟢 Green Light</h3>
+                <p><strong>Meaning:</strong> Go.</p>
+                <p><strong>Action:</strong> Proceed, but you must yield to any pedestrians or vehicles already in the intersection.</p>
+            </div>
+            <div class="detail-card">
+                <h3>⬅️ Green Arrow</h3>
+                <p><strong>Meaning:</strong> Protected Turn.</p>
+                <p><strong>Action:</strong> You have the right of way to turn in the direction of the arrow. Oncoming traffic is stopped.</p>
+            </div>
+        </div>
+
+        <h2>Special Situations</h2>
+        <ul>
+            <li><strong>Flashing Red:</strong> Treat this exactly like a Stop Sign. Stop completely, look all ways, then proceed when safe.</li>
+            <li><strong>Flashing Yellow:</strong> Proceed with caution. You do not need to stop, but be alert for cross traffic or pedestrians.</li>
+            <li><strong>Dead Signal (Power Outage):</strong> If the lights are completely dark, treat the intersection as a 4-Way Stop.</li>
+        </ul>
+        <br>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="quiz.html" style="background: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Test Your Knowledge &rarr;</a>
+        </div>
