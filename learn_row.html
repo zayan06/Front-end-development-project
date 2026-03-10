@@ -3,77 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn - Right of Way</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #ffffff; text-align: center; color: #333; }
-        
-        nav { background: #333; padding: 15px; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-size: 1.1em; }
-
-        .container { max-width: 700px; margin: 40px auto; padding: 20px; text-align: left; }
-        
-        .rule-box { background: #f0f8ff; border-left: 5px solid #3498db; padding: 20px; margin-bottom: 25px; border-radius: 5px; }
-        .rule-title { font-weight: bold; font-size: 1.2em; color: #2980b9; margin-bottom: 10px; display: block; }
-
-        .scenario { background: #333; color: white; padding: 15px; border-radius: 8px; margin-top: 10px; font-family: monospace; }
-    </style>
+    <title>Learn - Right of Way | Signal Academy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
-    <a href="index.html">Home</a>
-    <a href="register.html">Register</a>
-    <a href="learn.html">Lights</a>
-    <a href="learn_row.html">Right of Way</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="contact.html">Contact</a>
-</nav>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register / Login</a>
+        <a href="learn.html">Lights</a>
+        <a href="learn_row.html">Right of Way</a>
+        <a href="learn_signs.html">Road Signs</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html" onclick="alert('You have been logged out successfully!');" class="logout-btn">Logout</a>
+    </nav>
 
     <div class="container">
-        <h1 style="text-align: center;">Right of Way Rules</h1>
-        <p style="text-align: center; margin-bottom: 40px;">Who goes first? Right of way rules prevent accidents when traffic lights fail or don't exist.</p>
+        <h1 style="text-align: center;">The Master Guide to Right of Way</h1>
+        <p style="text-align: center; margin-bottom: 40px;">Right of way isn't something you "take"—it's something you <strong>yield</strong>. Master these rules to predict traffic and avoid collisions.</p>
+
+        <h2>1. The 4-Way Intersection</h2>
+        <p>When you approach an intersection governed by STOP signs in all directions, order matters.</p>
         
-
         <div class="rule-box">
-            <span class="rule-title">1. The Golden Rule of Intersections</span>
-            At a 4-way stop, the vehicle that arrives <strong>first</strong> gets to go <strong>first</strong>.
-            <div class="scenario">
-                Car A arrives at 10:00:01.<br>
-                Car B arrives at 10:00:05.<br>
-                Result: Car A goes first.
+            <span class="rule-title">🥇 The Golden Rule: First to Arrive</span>
+            The vehicle that arrives at the limit line and comes to a complete stop <strong>first</strong> gets to proceed <strong>first</strong>.
+        </div>
+        <div class="rule-box">
+            <span class="rule-title">🤝 The "Right" Rule: Simultaneous Arrival</span>
+            If two vehicles arrive at the exact same time, the vehicle on the <strong>right</strong> has the right of way. 
+        </div>
+        <div class="rule-box">
+            <span class="rule-title">⬆️ Head-to-Head Arrival</span>
+            If two vehicles arrive at the exact same time facing each other (head-on), the vehicle going <strong>straight</strong> goes first. A vehicle turning left must yield to a vehicle going straight.
+        </div>
+
+        <div class="video-container">
+            <h3>🎥 Watch: Master the 4-Way Stop</h3>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/n3Hn1q-0Yg8" title="Right of Way Video" allowfullscreen style="border: none; border-radius: 8px;"></iframe>
+        </div>
+
+        <h2 style="margin-top: 50px;">2. T-Intersections & Driveways</h2>
+        <p>Not all intersections look like a perfect cross. When a minor road meets a major road, different rules apply.</p>
+
+        <div class="tech-box">
+            <h3>T-Intersections</h3>
+            <p>At a T-intersection without signs or signals, the road that "ends" must yield to the road that continues (the through-street). Vehicles on the through-street have the continuous right of way.</p>
+        </div>
+        <div class="tech-box">
+            <h3>Driveways & Parking Lots</h3>
+            <p>If you are exiting a driveway, an alley, or a parking lot onto a public road, you have the lowest priority. You must yield to all pedestrians on the sidewalk and all traffic on the main road before pulling out.</p>
+        </div>
+
+        <h2 style="margin-top: 50px;">3. Unprotected Left Turns</h2>
+        <p>Making a left turn on a solid green light (without a green arrow) causes a large percentage of intersection accidents.</p>
+        
+        <div class="alert-box">
+            <h3 style="color: var(--danger); margin-top: 0;">⚠️ Yield to Oncoming Traffic</h3>
+            <p>When turning left on a solid green light, you must yield to oncoming traffic going straight or turning right. You may only initiate your turn when there is a safe gap in oncoming traffic.</p>
+        </div>
+
+        <h2 style="margin-top: 50px;">4. Roundabouts (Traffic Circles)</h2>
+        <p>Roundabouts are designed to keep traffic flowing without stopping, reducing severe T-bone accidents by 80%.</p>
+
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>Entering the Circle</h3>
+                <p>Traffic <strong>entering</strong> the roundabout must yield to traffic <strong>already inside</strong> the circle. Do not stop inside a roundabout; keep moving.</p>
+            </div>
+            <div class="detail-card">
+                <h3>Choosing Your Lane</h3>
+                <p>In a multi-lane roundabout, choose your lane before entering. Generally, use the right lane to turn right or go straight, and the left lane to turn left or make a U-turn.</p>
             </div>
         </div>
 
-        <div class="rule-box">
-            <span class="rule-title">2. The "Right" Rule</span>
-            If two vehicles arrive at the exact same time, the vehicle on the <strong>right</strong> has the right of way.
-            <div class="scenario">
-                YOU are at the stop line.<br>
-                A TRUCK is to your right.<br>
-                Result: You wait. The Truck goes first.
+        <div class="video-container" style="background: #e0f2f1;">
+            <h3>🎥 Watch: How to Drive in a Roundabout</h3>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/ONbE1e1qEKA" title="Roundabout Rules" allowfullscreen style="border: none; border-radius: 8px;"></iframe>
+        </div>
+
+        <h2 style="margin-top: 50px;">5. The Unbreakable Exceptions</h2>
+        <p>No matter what the traffic light or street sign says, you must immediately yield the right of way to these specific groups:</p>
+        
+        <div class="details-grid">
+            <div class="detail-card info-card" style="border-top-color: var(--danger);">
+                <span class="section-icon">🚑</span>
+                <h3>Emergency Vehicles</h3>
+                <p>If an ambulance, police car, or fire truck is approaching with lights and sirens, you must immediately pull over to the right edge of the road and stop until they pass.</p>
+            </div>
+            <div class="detail-card info-card" style="border-top-color: var(--warning);">
+                <span class="section-icon">🚌</span>
+                <h3>School Buses</h3>
+                <p>If a school bus is displaying flashing red lights and a STOP arm, traffic in <strong>both directions</strong> must stop, unless separated by a physical median.</p>
+            </div>
+            <div class="detail-card info-card" style="border-top-color: var(--success);">
+                <span class="section-icon">🚶</span>
+                <h3>Pedestrians</h3>
+                <p>Pedestrians in a marked or unmarked crosswalk always have the right of way. Even if they cross illegally (jaywalking), you must yield to avoid hitting them.</p>
             </div>
         </div>
 
-        <div class="rule-box">
-            <span class="rule-title">3. Left Turns Yield</span>
-            If you are turning left, you must yield to oncoming traffic going straight.
-            <div class="scenario">
-                [Green Light]<br>
-                Oncoming car is going straight.<br>
-                Result: You must wait in the intersection until they pass.
-            </div>
-        </div>
-
-        <div class="rule-box" style="border-left-color: #27ae60; background: #e8f5e9;">
-            <span class="rule-title" style="color: #27ae60;">4. Pedestrians Always Win</span>
-            Pedestrians in a crosswalk always have the right of way, regardless of lights or signs.
-        </div>
-
-        <br>
-        <div style="text-align: center;">
-            <a href="quiz.html" style="background: #27ae60; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Take the Final Exam &rarr;</a>
-        </div>
     </div>
-
 </body>
 </html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn - Road Signs | Signal Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register / Login</a>
+        <a href="learn.html">Lights</a>
+        <a href="learn_row.html">Right of Way</a>
+        <a href="learn_signs.html">Road Signs</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html" onclick="alert('You have been logged out successfully!');" class="logout-btn">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align: center;">The Master Guide to Road Signs</h1>
+        <p style="text-align: center; margin-bottom: 40px;">Road signs are designed to be understood in a fraction of a second. They communicate vital information through a universal language of colors, shapes, and symbols.</p>
+
+        <div class="video-container" style="background: #f1f5f9;">
+            <h3>🎥 Watch: The Secret Language of Road Signs</h3>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/n3Hn1q-0Yg8" title="Road Signs Explained" allowfullscreen style="border: none; border-radius: 8px;"></iframe>
+        </div>
+
+        <h2 style="margin-top: 50px;">1. Decoding by Color</h2>
+        <p>Before you can even read the text on a sign, its color tells you what category of information is approaching.</p>
+
+        <div class="details-grid">
+            <div class="detail-card" style="border-top: 4px solid #c0392b;">
+                <h3><span class="color-dot" style="background: #c0392b;"></span>Red</h3>
+                <p><strong>Stop, Yield, or Prohibited.</strong> This means mandatory compliance. (e.g., STOP, Do Not Enter, Wrong Way).</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #f1c40f;">
+                <h3><span class="color-dot" style="background: #f1c40f;"></span>Yellow</h3>
+                <p><strong>General Warning.</strong> Advises of unexpected road conditions, hazards, or changes ahead. (e.g., Curve Ahead, Slippery When Wet).</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #27ae60;">
+                <h3><span class="color-dot" style="background: #27ae60;"></span>Green</h3>
+                <p><strong>Guide / Directional.</strong> Shows where you are, which way to go, and distance to destinations. (e.g., Highway Exits, City Limits).</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #e67e22;">
+                <h3><span class="color-dot" style="background: #e67e22;"></span>Orange</h3>
+                <p><strong>Construction / Work Zone.</strong> Temporary warnings regarding road work, detours, or maintenance.</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #2980b9;">
+                <h3><span class="color-dot" style="background: #2980b9;"></span>Blue</h3>
+                <p><strong>Motorist Services.</strong> Directs you to hospitals, gas stations, food, lodging, and rest areas.</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #8d6e63;">
+                <h3><span class="color-dot" style="background: #8d6e63;"></span>Brown</h3>
+                <p><strong>Recreation / Cultural.</strong> Points to state/national parks, historical sites, and scenic points of interest.</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #ccff00;">
+                <h3><span class="color-dot" style="background: #ccff00;"></span>Fluorescent Yellow-Green</h3>
+                <p><strong>School & Pedestrian Zones.</strong> High-visibility signs specifically for school zones, bicycle crossings, and crosswalks.</p>
+            </div>
+            <div class="detail-card" style="border-top: 4px solid #ff66cc;">
+                <h3><span class="color-dot" style="background: #ff66cc;"></span>Coral / Pink</h3>
+                <p><strong>Incident Management.</strong> Temporary signs used for traffic accidents, natural disasters, or hazardous spills.</p>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 50px;">2. Decoding by Shape</h2>
+        <p>If a sign is covered in snow or mud, its shape alone will tell you what to do.</p>
+
+        <div class="tech-box">
+            <h3>🛑 Octagon (8 Sides) = Exclusive to STOP Signs</h3>
+            <p>No other sign on the road uses this shape. If you see the back of an octagon at an intersection, you know the oncoming traffic must stop.</p>
+        </div>
+        
+        <div class="tech-box">
+            <h3>🔽 Inverted Triangle = Exclusive to YIELD Signs</h3>
+            <p>This tells you to slow down and prepare to stop if necessary. It is the only downward-pointing sign.</p>
+        </div>
+
+        <div class="tech-box">
+            <h3>🚩 Pennant (Sideways Triangle) = No Passing Zone</h3>
+            <p>Always placed on the <strong>left</strong> side of a two-way road. It warns you that you are entering a zone where you cannot cross the center line to pass.</p>
+        </div>
+
+        <div class="tech-box">
+            <h3>🔶 Diamond = Hazard / Warning</h3>
+            <p>Used almost exclusively for yellow or orange warning signs to alert you of curves, intersections, animals, or slippery roads.</p>
+        </div>
+
+        <h2 style="margin-top: 50px;">3. Highway Exits & Mileposts</h2>
+        <p>Green guide signs do more than point to cities—they contain a hidden navigation system.</p>
+
+        <div class="rule-box" style="border-left-color: var(--success);">
+            <span class="rule-title">🛣️ The Mile-Marker Secret</span>
+            <p>In most regions, highway exit numbers perfectly match the milepost markers. If you are at Mile Marker 10, the next exit will be Exit 10. If you need Exit 45, you know exactly how many miles you have left to drive (35 miles)!</p>
+        </div>
+
+        <div class="rule-box" style="border-left-color: var(--success);">
+            <span class="rule-title">⬅️➡️ Left vs. Right Exits</span>
+            <p>Look at the small exit number tab on top of a green highway sign. If the tab is aligned to the <strong>right side</strong> of the sign, your exit will be on the right. If the tab is aligned to the <strong>left side</strong>, prepare for a left-lane exit!</p>
+        </div>
+
+        <div class="video-container" style="background: #e0f2f1;">
+            <h3>🎥 Watch: Understanding Highway Navigation & Shields</h3>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/ONbE1e1qEKA" title="Highway Guide Signs" allowfullscreen style="border: none; border-radius: 8px;"></iframe>
+        </div>
+
+        <h2 style="margin-top: 50px;">4. Work Zones (The Orange Zone)</h2>
+        <p>Construction zones require maximum attention. Speed limits here are strictly enforced.</p>
+
+        <div class="alert-box">
+            <h3 style="color: var(--warning); margin-top: 0;">⚠️ Fines Double in Work Zones</h3>
+            <p>When you see orange signs, you must reduce your speed. In most jurisdictions, traffic fines (like speeding tickets) are completely doubled if the infraction occurs within an active work zone, even if workers are not immediately visible.</p>
+        </div>
+
+    </div>
+</body>
+</html>

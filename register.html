@@ -3,43 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Signal Academy</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        nav { background: #333; padding: 15px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-
-        .form-container { max-width: 400px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        
-        input, select { width: 100%; padding: 10px; margin: 8px 0 20px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        input:focus, select:focus { border-color: #3498db; outline: none; }
-        
-        button { width: 100%; background-color: #3498db; color: white; padding: 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background-color: #2980b9; }
-    </style>
+    <title>Register & Login - Signal Academy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
-    <a href="index.html">Home</a>
-    <a href="register.html">Register</a>
-    <a href="learn.html">Lights</a>
-    <a href="learn_row.html">Right of Way</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="contact.html">Contact</a>
-</nav>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register / Login</a>
+    </nav>
 
     <div class="form-container">
-        <h2 style="text-align: center; margin-top: 0;">Enroll in Traffic Basics</h2>
-        <form action="#" method="POST" onsubmit="alert('Registration Successful!'); return false;">
-            <label>Full Name:</label>
-            <input type="text" placeholder="John Doe" required>
+        <div id="register-section">
+            <h2 style="text-align: center;">Student Registration</h2>
+            <form id="regForm" novalidate>
+                <label for="userName">Full Name</label>
+                <input type="text" id="userName" placeholder="E.g., Jane Doe">
+                <span id="nameErr" class="error-message"></span>
 
-            <label>Email:</label>
-            <input type="email" placeholder="john@example.com" required>
-            <button type="submit">Sign Up Now</button>
-        </form>
+                <label for="userEmail">Email Address</label>
+                <input type="email" id="userEmail" placeholder="jane@example.com">
+                <span id="emailErr" class="error-message"></span>
+
+                <label for="userPhone">Phone Number</label>
+                <input type="tel" id="userPhone" placeholder="1234567890">
+                <span id="phoneErr" class="error-message"></span>
+
+                <label for="userDob">Date of Birth</label>
+                <input type="date" id="userDob">
+                <span id="dobErr" class="error-message"></span>
+
+                <label for="userCity">City</label>
+                <input type="text" id="userCity" placeholder="E.g., Intersection City">
+                <span id="cityErr" class="error-message"></span>
+
+                <label for="userLicense">Current License Status</label>
+                <select id="userLicense">
+                    <option value="">-- Select Status --</option>
+                    <option value="none">No License</option>
+                    <option value="permit">Learner's Permit</option>
+                    <option value="full">Full Driver's License</option>
+                </select>
+                <span id="licenseErr" class="error-message"></span>
+
+                <label for="userCourse">Course Interest</label>
+                <select id="userCourse">
+                    <option value="">-- Select Course --</option>
+                    <option value="lights">Traffic Lights</option>
+                    <option value="row">Right of Way</option>
+                    <option value="signs">Road Signs</option>
+                    <option value="all">Full Curriculum</option>
+                </select>
+                <span id="courseErr" class="error-message"></span>
+
+                <label for="userPass">Password</label>
+                <input type="password" id="userPass" placeholder="••••••••">
+                <span id="passErr" class="error-message"></span>
+
+                <button type="submit" class="btn-submit">Create Account</button>
+            </form>
+            <p class="toggle-text">Already have an account? <a style="cursor: pointer; color: var(--secondary); text-decoration: underline;" onclick="toggleForms('login')">Login here</a></p>
+        </div>
+
+        <div id="login-section" style="display: none;">
+            <h2 style="text-align: center;">Student Login</h2>
+            <form id="loginForm" novalidate>
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" placeholder="jane@example.com">
+                <span id="loginEmailErr" class="error-message"></span>
+
+                <label for="loginPass">Password</label>
+                <input type="password" id="loginPass" placeholder="••••••••">
+                
+                <span id="loginGeneralErr" class="error-message" style="margin-top: 5px;"></span>
+
+                <button type="submit" class="btn-submit" style="background: var(--primary);">Login to Academy</button>
+            </form>
+            <p class="toggle-text">Don't have an account? <a style="cursor: pointer; color: var(--secondary); text-decoration: underline;" onclick="toggleForms('register')">Register here</a></p>
+        </div>
     </div>
 
+    <script>
+        function toggleForms(formType) {
+            const regSection = document.getElementById('register-section');
+            const logSection = document.getElementById('login-section');
+            if (formType === 'login') {
+                regSection.style.display = 'none';
+                logSection.style.display = 'block';
+            } else {
+                regSection.style.display = 'block';
+                logSection.style.display = 'none';
+            }
+        }
+
+        function checkField(id, errId, condition, msg) {
+            const el = document.getElementById(id);
+            const err = document.getElementById(errId);
+            if (!condition) {
+                err.innerText = msg; err.style.display = 'block'; el.classList.add('invalid'); return false;
+            } else {
+                err.style.display = 'none'; el.classList.remove('invalid'); return true;
+            }
+        }
+
+        // Registration
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isFormValid = true;
+
+            const name = document.getElementById('userName').value.trim();
+            if (!checkField('userName', 'nameErr', name.length >= 3, "Please enter your full name (min 3 chars).")) isFormValid = false;
+
+            const email = document.getElementById('userEmail').value.trim();
+            if (!checkField('userEmail', 'emailErr', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), "Enter a valid email.")) isFormValid = false;
+
+            const phone = document.getElementById('userPhone').value.trim();
+            if (!checkField('userPhone', 'phoneErr', /^\d{10}$/.test(phone), "Enter a 10-digit phone number.")) isFormValid = false;
+
+            const dob = document.getElementById('userDob').value;
+            if (!checkField('userDob', 'dobErr', dob !== "" && new Date(dob) < new Date(), "Enter a valid date of birth.")) isFormValid = false;
+
+            const city = document.getElementById('userCity').value.trim();
+            if (!checkField('userCity', 'cityErr', city.length >= 3, "Please enter your city.")) isFormValid = false;
+
+            const license = document.getElementById('userLicense').value;
+            if (!checkField('userLicense', 'licenseErr', license !== "", "Select license status.")) isFormValid = false;
+
+            const course = document.getElementById('userCourse').value;
+            if (!checkField('userCourse', 'courseErr', course !== "", "Select a course.")) isFormValid = false;
+
+            const pass = document.getElementById('userPass').value;
+            if (!checkField('userPass', 'passErr', pass.length >= 8, "Password must be 8+ characters.")) isFormValid = false;
+
+            if (isFormValid) {
+                let users = JSON.parse(localStorage.getItem('signalAcademyUsers')) || [];
+                if (users.some(u => u.email === email)) {
+                    alert("An account with this email already exists! Please login.");
+                    toggleForms('login');
+                    return;
+                }
+
+                users.push({ name, email, phone, dob, city, license, course, pass });
+                localStorage.setItem('signalAcademyUsers', JSON.stringify(users));
+
+                alert('Registration Complete! Redirecting to your course...');
+                if (course === 'row') window.location.href = 'learn_row.html';
+                else if (course === 'signs') window.location.href = 'learn_signs.html';
+                else window.location.href = 'learn.html';
+            }
+        });
+
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const loginEmail = document.getElementById('loginEmail').value.trim();
+            const loginPass = document.getElementById('loginPass').value;
+            const generalErr = document.getElementById('loginGeneralErr');
+            
+            let isValid = true;
+            if (!checkField('loginEmail', 'loginEmailErr', loginEmail !== "", "Please enter your email.")) isValid = false;
+            if (loginPass === "") isValid = false; 
+
+            if (isValid) {
+                let users = JSON.parse(localStorage.getItem('signalAcademyUsers')) || [];
+                const foundUser = users.find(u => u.email === loginEmail && u.pass === loginPass);
+
+                if (foundUser) {
+                    generalErr.style.display = 'none';
+                    alert(`Welcome back, ${foundUser.name}!`);
+                    if (foundUser.course === 'row') window.location.href = 'learn_row.html';
+                    else if (foundUser.course === 'signs') window.location.href = 'learn_signs.html';
+                    else window.location.href = 'learn.html';
+                } else {
+                    generalErr.innerText = "Incorrect email or password. Please try again.";
+                    generalErr.style.display = 'block';
+                }
+            }
+        });
+    </script>
 </body>
 </html>

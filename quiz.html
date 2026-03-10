@@ -4,75 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Signal Academy</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-        
-        nav { background: #2c3e50; padding: 15px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-
-        .container { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        
-        .question-box { background: #e8f6f3; padding: 20px; border-radius: 8px; border-left: 5px solid #1abc9c; }
-        
-        
-        .option-group { margin: 15px 0; }
-        
-        
-        .feedback { display: none; margin-top: 5px; margin-left: 28px; font-weight: bold; font-size: 0.9em; }
-        
-        input[type="radio"]:checked ~ .feedback { display: block; }
-        
-        .correct { color: #27ae60; }
-        .wrong { color: #c0392b; }
-
-        input[type="radio"] { transform: scale(1.2); cursor: pointer; }
-        label { cursor: pointer; font-size: 1.1em; margin-left: 8px; }
-
-        button { background: #34495e; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 15px; }
-        button:hover { background: #2c3e50; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav>
-    <a href="index.html">Home</a>
-    <a href="register.html">Register</a>
-    <a href="learn.html">Lights</a>
-    <a href="learn_row.html">Right of Way</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="contact.html">Contact</a>
-</nav>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register / Login</a>
+        <a href="learn.html">Lights</a>
+        <a href="learn_row.html">Right of Way</a>
+        <a href="learn_signs.html">Road Signs</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html" onclick="alert('You have been logged out successfully!');" class="logout-btn">Logout</a>
+    </nav>
 
     <div class="container">
-        <h1>Final Assessment</h1>
-        <p>Select an answer to see the result immediately.</p>
+        <h1 style="text-align: center;">The Indian Traffic Law Exam</h1>
+        <p style="text-align: center; margin-bottom: 30px;">Test your knowledge of the Motor Vehicles Act and Indian road rules. You must answer all questions.</p>
         
-        <form>
-            <div class="question-box">
-                <p><strong>Question 1:</strong> What should you do when the light turns solid yellow?</p>
-                
-                <div class="option-group">
-                    <input type="radio" name="q1" id="opt1">
-                    <label for="opt1">Speed up to beat the red</label>
-                    <div class="feedback wrong">❌ Incorrect. This is dangerous!</div>
-                </div>
+        <form id="quizForm">
+            <div id="quiz-container"></div>
 
-                <div class="option-group">
-                    <input type="radio" name="q1" id="opt2">
-                    <label for="opt2">Stop safely if possible</label>
-                    <div class="feedback correct">✅ Correct! Always prepare to stop.</div>
-                </div>
-
-                <div class="option-group">
-                    <input type="radio" name="q1" id="opt3">
-                    <label for="opt3">Honk your horn</label>
-                    <div class="feedback wrong">❌ Incorrect. Horns are for emergencies only.</div>
-                </div>
+            <div class="btn-container">
+                <button type="button" class="btn-submit" onclick="calculateScore()">Submit Exam</button>
+                <button type="button" class="btn-reset" onclick="resetQuiz()">Reset</button>
             </div>
 
-            <button type="reset">Reset Quiz</button>
+            <div id="scoreDisplay" style="display: none; text-align: center; margin-top: 25px; padding: 20px; border-radius: 8px; font-size: 1.3em; font-weight: bold;"></div>
         </form>
     </div>
 
+    <script>
+        const quizData = [
+            { question: "What is the general rule for overtaking in India?", options: ["Overtake from the left", "Overtake from the right", "Overtake from either side if clear", "Honk continuously while overtaking from the left"], answer: 1 },
+            { question: "What does a circular road sign indicate?", options: ["Information", "Warning", "Mandatory regulation", "Directions"], answer: 2 },
+            { question: "What is the legal limit for Blood Alcohol Concentration (BAC) for driving in India?", options: ["0.00%", "30 mg per 100 ml of blood (0.03%)", "80 mg per 100 ml of blood (0.08%)", "50 mg per 100 ml of blood (0.05%)"], answer: 1 },
+            { question: "Can you make a 'Free Left' turn on a red light in India?", options: ["Yes, always", "No, never", "Only if there is a specific sign or dedicated slip lane allowing it", "Only between 10 PM and 6 AM"], answer: 2 },
+            { question: "What does a triangular road sign indicate?", options: ["Mandatory order", "Cautionary / Warning", "Hospital ahead", "No parking zone"], answer: 1 },
+            { question: "If you approach an unguarded railway crossing, what must you do?", options: ["Sound horn and cross quickly", "Stop, look both ways, listen, and then cross if safe", "Wait for another vehicle to cross first", "Turn on your headlights and cross"], answer: 1 },
+            { question: "What is the validity of a Learner's License in India?", options: ["1 month", "3 months", "6 months", "1 year"], answer: 2 },
+            { question: "What does a yellow number plate with black lettering mean?", options: ["Private vehicle", "Commercial / Taxi vehicle", "Electric vehicle", "Foreign consulate vehicle"], answer: 1 },
+            { question: "When are you allowed to use your mobile phone while driving?", options: ["To send quick text messages", "To take calls on speakerphone", "Strictly prohibited, except for navigation if fixed to a dashboard holder", "When stuck in a traffic jam"], answer: 2 },
+            { question: "What does the 'Golden Hour' refer to in road safety?", options: ["The first hour of sunrise when visibility is low", "The one hour after a traumatic injury when emergency care is most effective", "Rush hour traffic in metro cities", "The hour before sunset"], answer: 1 },
+            { question: "Who has the right of way at a Zebra Crossing?", options: ["Two-wheelers", "Heavy vehicles", "Pedestrians", "The vehicle going the fastest"], answer: 2 },
+            { question: "What does a flashing yellow traffic light mean?", options: ["Stop immediately", "Slow down and proceed with caution", "Speed up to clear the intersection", "The light is broken"], answer: 1 },
+            { question: "Is a helmet mandatory for a pillion rider (passenger) on a two-wheeler?", options: ["No, only for the driver", "Yes, it is mandatory under the Motor Vehicles Act", "Only on highways", "Only if they are under 18"], answer: 1 },
+            { question: "If an ambulance or fire engine is approaching with sirens, what must you do?", options: ["Speed up and drive ahead of them", "Stop exactly where you are", "Draw to the left edge of the road and allow free passage", "Turn on your hazard lights and follow them"], answer: 2 },
+            { question: "What does PUC stand for?", options: ["Pollution Under Control", "Passenger Utility Car", "Primary Urban Crossing", "Public Underpass Construction"], answer: 0 },
+            { question: "If a driver extends their right arm out the window and moves the palm up and down, what does it mean?", options: ["They are turning right", "They are letting you pass", "They are slowing down", "They are turning left"], answer: 2 },
+            { question: "What does a continuous solid yellow line down the middle of a two-way road mean?", options: ["You can overtake freely", "Overtaking is strictly prohibited by crossing the line", "One-way traffic only", "Parking is allowed on the line"], answer: 1 },
+            { question: "Where is sounding the horn strictly prohibited?", options: ["On highways", "Near Silence Zones like hospitals and courts", "At blind curves", "In residential areas after 6 PM"], answer: 1 },
+            { question: "If you hit a pedestrian or cause an accident, what is your first legal duty?", options: ["Flee the scene to avoid a mob", "Call your insurance company", "Take all reasonable steps to secure medical attention for the injured", "Move your vehicle to a mechanic"], answer: 2 },
+            { question: "What does a green number plate with white lettering indicate?", options: ["Government vehicle", "Rental car", "Electric vehicle (Private)", "Military vehicle"], answer: 2 }
+        ];
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = quizData.map((q, i) => `
+                <div class="question-box" id="qBox-${i}">
+                    <div class="question-text">${i + 1}. ${q.question}</div>
+                    ${q.options.map((opt, oi) => `
+                        <label class="option-label">
+                            <input type="radio" name="q${i}" value="${oi}"> ${opt}
+                        </label>
+                    `).join('')}
+                    <div id="feedback-${i}" class="feedback-msg"></div>
+                </div>`).join('');
+        }
+
+        function calculateScore() {
+            let score = 0, answered = 0;
+            const totalQuestions = quizData.length;
+            
+            for (let i = 0; i < totalQuestions; i++) {
+                if (document.querySelector(`input[name="q${i}"]:checked`)) answered++;
+            }
+            if (answered < totalQuestions) {
+                alert(`Please answer all ${totalQuestions} questions before submitting the exam!`);
+                return;
+            }
+
+            quizData.forEach((q, i) => {
+                const sel = document.querySelector(`input[name="q${i}"]:checked`);
+                const box = document.getElementById(`qBox-${i}`);
+                const feedback = document.getElementById(`feedback-${i}`);
+
+                if (parseInt(sel.value) === q.answer) {
+                    score++;
+                    box.style.borderLeftColor = "#10b981"; 
+                    box.style.backgroundColor = "#f0fdf4";
+                    feedback.innerHTML = "✅ Correct!";
+                    feedback.style.color = "#10b981";
+                } else {
+                    box.style.borderLeftColor = "#ef4444"; 
+                    box.style.backgroundColor = "#fef2f2";
+                    feedback.innerHTML = `❌ Incorrect. The correct answer is: <strong>${q.options[q.answer]}</strong>`;
+                    feedback.style.color = "#ef4444";
+                }
+                feedback.style.display = "block";
+            });
+
+            const res = document.getElementById("scoreDisplay");
+            res.style.display = "block";
+            const percentage = (score / totalQuestions) * 100;
+            
+            if (percentage >= 90) {
+                res.innerHTML = `🎉 Outstanding! Score: ${score}/${totalQuestions} (${percentage}%). You are ready for the Indian roads!`;
+                res.style.backgroundColor = "#e8f5e9";
+                res.style.color = "#2e7d32";
+                res.style.border = "2px solid #4caf50";
+            } else if (percentage >= 70) {
+                res.innerHTML = `👍 Good job! Score: ${score}/${totalQuestions} (${percentage}%). Make sure to review your mistakes.`;
+                res.style.backgroundColor = "#fff8e1";
+                res.style.color = "#f57f17";
+                res.style.border = "2px solid #ffb300";
+            } else {
+                res.innerHTML = `⚠️ Keep studying. Score: ${score}/${totalQuestions} (${percentage}%). Please review the traffic laws carefully.`;
+                res.style.backgroundColor = "#ffebee";
+                res.style.color = "#c62828";
+                res.style.border = "2px solid #e53935";
+            }
+
+            res.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() { 
+            document.getElementById("quizForm").reset(); 
+            document.getElementById("scoreDisplay").style.display = "none"; 
+            
+            quizData.forEach((_, i) => {
+                const box = document.getElementById(`qBox-${i}`);
+                const feedback = document.getElementById(`feedback-${i}`);
+                box.style.borderLeftColor = "#1abc9c";
+                box.style.backgroundColor = "#f9f9f9";
+                feedback.style.display = "none";
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        window.onload = renderQuiz;
+    </script>
 </body>
 </html>
